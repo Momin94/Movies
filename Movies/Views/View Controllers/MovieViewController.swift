@@ -10,6 +10,8 @@ class MoviesTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //bindViewModel()
+        //    movieViewModel.movieArray.forEach(MovieResults in
+        //    bind(MovieResults))
         movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
         movieViewModel.movieViewController = self
         movieViewModel.getAllMoviesAF()
