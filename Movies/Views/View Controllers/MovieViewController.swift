@@ -9,7 +9,7 @@ class MoviesTableViewController: UIViewController {
         super.viewDidLoad()
         movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
         movieViewModel.movieViewController = self
-        movieViewModel.getAllMovies()
+        movieViewModel.getAllMoviesAF()
     }
 }
 

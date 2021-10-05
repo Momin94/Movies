@@ -9,8 +9,10 @@ class MovieViewModel {
         AF.request("https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1").response { response in
             if let data = response.data {
                 do { // error coming here
-                    let movieResponse = try JSONDecoder().decode([MovieResults].self, from: data)
-                    self.movieArray.append(contentsOf: movieResponse)
+                    let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
+                    if let results = movieResponse.results {
+                        self.movieArray.append(contentsOf: results)
+                    }
                     DispatchQueue.main.async {
                         self.movieViewController?.movieTableView.reloadData()
                     }
@@ -25,7 +27,7 @@ class MovieViewModel {
         URLSession.shared.dataTask(with: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1")!) { data, _, error in
             if error == nil {
                 if let data = data {
-                    do { // error coming here
+                    do {
                         let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
                         if let results = movieResponse.results {
                             self.movieArray.append(contentsOf: results)
