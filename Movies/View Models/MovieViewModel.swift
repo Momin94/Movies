@@ -8,7 +8,7 @@ class MovieViewModel {
     func getAllMoviesAF() {
         AF.request("https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1").response { response in
             if let data = response.data {
-                do { // error coming here
+                do {
                     let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
                     if let results = movieResponse.results {
                         self.movieArray.append(contentsOf: results)
