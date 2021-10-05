@@ -1,5 +1,7 @@
 import Foundation
 
+// MARK: - Total Result Model
+
 struct ResultModel: Codable {
     let page: Int?
     let results: [MovieResults]?
@@ -21,6 +23,8 @@ struct ResultModel: Codable {
         total_results = try values.decodeIfPresent(Int.self, forKey: .total_results)
     }
 }
+
+// MARK: - Movie Results Model
 
 struct MovieResults: Codable {
     let adult: Bool?

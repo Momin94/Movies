@@ -2,16 +2,22 @@ import SDWebImage
 import UIKit
 
 class MoviesTableViewController: UIViewController {
+    // MARK: - Properties
+
     @IBOutlet var movieTableView: UITableView!
     var movieViewModel = MovieViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //bindViewModel()
         movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
         movieViewModel.movieViewController = self
         movieViewModel.getAllMoviesAF()
+        
     }
 }
+
+// MARK: - Extension
 
 extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,4 +48,15 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 
         navigationController?.show(destinationController, sender: self)
     }
+    
+//    func bindViewModel() {
+//            if let viewModel = movieViewModel {
+//                viewModel.helloText.bind({ (helloText) in
+//                    DispatchQueue.main.async {
+//                        self.helloLabel.text = helloText
+//                    }
+//                })
+//            }
+//        }
+    
 }

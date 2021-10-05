@@ -2,6 +2,8 @@ import SDWebImage
 import UIKit
 
 class MovieDetailsViewController: UIViewController {
+    // MARK: - Properties
+
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieGenre: UILabel!
     @IBOutlet var movieTitle: UILabel!
@@ -12,6 +14,8 @@ class MovieDetailsViewController: UIViewController {
     var movieOverviewText: String?
     var movieDateText: String?
     var movieImageText: String?
+
+    // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()

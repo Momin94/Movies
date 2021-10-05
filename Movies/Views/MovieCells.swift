@@ -8,9 +8,13 @@
 import UIKit
 
 class MovieCells: UITableViewCell {
-    @IBOutlet var movieImage: UIImageView!
+    // MARK: - Properties
 
+    @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
+    
+    // MARK: - Methods
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
