@@ -75,6 +75,7 @@
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="kab-d0-wYF" id="loZ-dV-JCI"/>
+                            <outlet property="delegate" destination="kab-d0-wYF" id="qoB-kL-6QG"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Popular Movies" largeTitleDisplayMode="always" id="oxB-Sv-a5f"/>

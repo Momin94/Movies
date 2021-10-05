@@ -8,9 +8,8 @@
 import UIKit
 
 class MovieCells: UITableViewCell {
-
     @IBOutlet var movieImage: UIImageView!
-   
+
     @IBOutlet var movieTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +21,4 @@ class MovieCells: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

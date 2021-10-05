@@ -15,7 +15,6 @@ class MovieDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         movieGenre?.text = movieGenreText
         movieTitle?.text = movieTitleText
         movieDate?.text = movieDateText
