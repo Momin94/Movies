@@ -26,6 +26,11 @@ class MovieViewModel {
             }
         }
     }
+    
+    func getCount() -> Int
+    {
+        return movieArray.count
+    }
 
     func getAllMovies() {
         URLSession.shared.dataTask(with: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1")!) { data, _, error in

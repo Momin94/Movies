@@ -9,11 +9,10 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieOverview: UILabel!
     @IBOutlet var movieDate: UILabel!
-    
-    
-    var movieDetailViewModel : MovieViewModel!
-    var index : Int!
-    var imageText : String?
+
+    var movieDetailViewModel: MovieViewModel!
+    var index: Int!
+    var imageText: String?
 
     // MARK: - Methods
 
@@ -23,8 +22,7 @@ class MovieDetailsViewController: UIViewController {
         movieTitle?.text = movieDetailViewModel.movieArray[index].title
         movieDate?.text = movieDetailViewModel.movieArray[index].release_date
         movieOverview?.text = movieDetailViewModel.movieArray[index].overview
-        imageText =  "https://image.tmdb.org/t/p/w500/" + (movieDetailViewModel.movieArray[index].poster_path ?? "")
-        
+        imageText = "https://image.tmdb.org/t/p/w500/" + (movieDetailViewModel.movieArray[index].poster_path ?? "")
     }
 
     override func viewDidLayoutSubviews() {

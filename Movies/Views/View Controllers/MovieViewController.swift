@@ -10,8 +10,9 @@ class MoviesTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieTableView.register(UINib(nibName: movieCell.getCellName()
-, bundle: nil), forCellReuseIdentifier: movieCell.getCellName())
+        movieTableView.register(UINib(nibName: movieCell.getCellName(),
+                                      bundle: nil),
+                        forCellReuseIdentifier: movieCell.getCellName())
         movieViewModel.movieViewController = self
         movieViewModel.getAllMoviesAF()
     }
@@ -21,7 +22,7 @@ class MoviesTableViewController: UIViewController {
 
 extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieViewModel.movieArray.count
+        return movieViewModel.getCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,14 +39,12 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
         guard let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as? MovieDetailsViewController else {
             return
         }
-        
-        if indexPath.row <= movieViewModel.movieArray.count
-        {
+
+        if indexPath.row <= movieViewModel.movieArray.count {
             let movieViewModel = movieViewModel
             destinationController.movieDetailViewModel = movieViewModel
             destinationController.index = indexPath.row
-        navigationController?.show(destinationController, sender: self)
+            navigationController?.show(destinationController, sender: self)
         }
     }
-        
 }
