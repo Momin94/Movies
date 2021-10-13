@@ -13,9 +13,8 @@ class MoviesTableViewController: UIViewController {
         //    movieViewModel.movieArray.forEach(MovieResults in
         //    bind(MovieResults))
         movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
-        movieViewModel.movieViewController = self
+//        movieViewModel.movieViewController = self
         movieViewModel.getAllMoviesAF()
-        
     }
 }
 
@@ -37,10 +36,12 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as! MovieDetailsViewController
-
+        guard let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as? MovieDetailsViewController else {
+            return
+        }
+        //out of bound
+        
         let modelMovie = movieViewModel.movieArray[indexPath.row]
-
         destinationController.movieGenreText = modelMovie.vote_average?.description
         destinationController.movieDateText = modelMovie.release_date
         destinationController.movieOverviewText = modelMovie.overview

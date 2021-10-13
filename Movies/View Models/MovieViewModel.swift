@@ -5,7 +5,7 @@ class MovieViewModel {
     // MARK: - Properties
 
     var movieArray = [MovieResults]()
-    weak var movieViewController: MoviesTableViewController?
+//    weak var movieViewController: MoviesTableViewController?
 
     // MARK: - Methods
 
@@ -17,9 +17,9 @@ class MovieViewModel {
                     if let results = movieResponse.results {
                         self.movieArray.append(contentsOf: results)
                     }
-                    DispatchQueue.main.async {
-                        self.movieViewController?.movieTableView.reloadData()
-                    }
+//                    DispatchQueue.main.async {
+//                        self.movieViewController?.movieTableView.reloadData()
+//                    }
                 } catch let err {
                     print(err)
                 }
@@ -36,9 +36,9 @@ class MovieViewModel {
                         if let results = movieResponse.results {
                             self.movieArray.append(contentsOf: results)
                         }
-                        DispatchQueue.main.async {
-                            self.movieViewController?.movieTableView.reloadData()
-                        }
+//                        DispatchQueue.main.async {
+//                            self.movieViewController?.movieTableView.reloadData()
+//                        }
                     } catch let err {
                         print(err)
                     }
