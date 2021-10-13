@@ -1,11 +1,11 @@
 import Alamofire
 import UIKit.UIImage
 
-class MovieViewModel {
+class MovieDetailsViewModel {
     // MARK: - Properties
 
   var movieArray = [MovieResults]()
-  weak var movieViewController: MoviesTableViewController?
+  weak var movieDetailViewController: MovieDetailsViewController?
 
     // MARK: - Methods
 
@@ -18,7 +18,7 @@ class MovieViewModel {
                         self.movieArray.append(contentsOf: results)
                     }
                     DispatchQueue.main.async {
-                        self.movieViewController?.movieTableView.reloadData()
+                      //  self.movieViewController?.movieTableView.reloadData()
                     }
                 } catch let err {
                     print(err)
@@ -37,7 +37,7 @@ class MovieViewModel {
                             self.movieArray.append(contentsOf: results)
                         }
                         DispatchQueue.main.async {
-                            self.movieViewController?.movieTableView.reloadData()
+                           // self.movieViewController?.movieTableView.reloadData()
                         }
                     } catch let err {
                         print(err)

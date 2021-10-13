@@ -6,14 +6,13 @@ class MoviesTableViewController: UIViewController {
 
     @IBOutlet var movieTableView: UITableView!
     var movieViewModel = MovieViewModel()
+    var movieCell = MovieCells()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bindViewModel()
-        //    movieViewModel.movieArray.forEach(MovieResults in
-        //    bind(MovieResults))
-        movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
-//        movieViewModel.movieViewController = self
+        movieTableView.register(UINib(nibName: movieCell.getCellName()
+, bundle: nil), forCellReuseIdentifier: movieCell.getCellName())
+        movieViewModel.movieViewController = self
         movieViewModel.getAllMoviesAF()
     }
 }
@@ -26,7 +25,7 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCells", for: indexPath) as? MovieCells
+        let cell = tableView.dequeueReusableCell(withIdentifier: movieCell.getCellName(), for: indexPath) as? MovieCells
         let modelMovie = movieViewModel.movieArray[indexPath.row]
         cell?.movieTitle.text = modelMovie.title
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? ""))
@@ -39,27 +38,14 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
         guard let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as? MovieDetailsViewController else {
             return
         }
-        //out of bound
         
-        let modelMovie = movieViewModel.movieArray[indexPath.row]
-        destinationController.movieGenreText = modelMovie.vote_average?.description
-        destinationController.movieDateText = modelMovie.release_date
-        destinationController.movieOverviewText = modelMovie.overview
-        destinationController.movieTitleText = modelMovie.title
-        let imageURL = "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? "")
-        destinationController.movieImageText = imageURL
-
+        if indexPath.row <= movieViewModel.movieArray.count
+        {
+            let movieViewModel = movieViewModel
+            destinationController.movieDetailViewModel = movieViewModel
+            destinationController.index = indexPath.row
         navigationController?.show(destinationController, sender: self)
+        }
     }
-    
-//    func bindViewModel() {
-//            if let viewModel = movieViewModel {
-//                viewModel.helloText.bind({ (helloText) in
-//                    DispatchQueue.main.async {
-//                        self.helloLabel.text = helloText
-//                    }
-//                })
-//            }
-//        }
-    
+        
 }

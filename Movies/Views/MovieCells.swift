@@ -1,10 +1,3 @@
-//
-//  MovieCells.swift
-//  Movies
-//
-//  Created by momin on 05/10/2021.
-//
-
 import UIKit
 
 class MovieCells: UITableViewCell {
@@ -12,7 +5,7 @@ class MovieCells: UITableViewCell {
 
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
-    
+    public var cellName : String = "MovieCells"
     // MARK: - Methods
 
     override func awakeFromNib() {
@@ -28,5 +21,10 @@ class MovieCells: UITableViewCell {
     func setupCell(movie: MovieResults) {
         
         movieTitle.text = movie.original_title
+    }
+    
+    func getCellName() -> String
+    {
+        return cellName
     }
 }

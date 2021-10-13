@@ -9,25 +9,27 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieOverview: UILabel!
     @IBOutlet var movieDate: UILabel!
-    var movieGenreText: String?
-    var movieTitleText: String?
-    var movieOverviewText: String?
-    var movieDateText: String?
-    var movieImageText: String?
+    
+    
+    var movieDetailViewModel : MovieViewModel!
+    var index : Int!
+    var imageText : String?
 
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieGenre?.text = movieGenreText
-        movieTitle?.text = movieTitleText
-        movieDate?.text = movieDateText
-        movieOverview?.text = movieOverviewText
+        movieGenre?.text = movieDetailViewModel.movieArray[index].vote_average?.description
+        movieTitle?.text = movieDetailViewModel.movieArray[index].title
+        movieDate?.text = movieDetailViewModel.movieArray[index].release_date
+        movieOverview?.text = movieDetailViewModel.movieArray[index].overview
+        imageText =  "https://image.tmdb.org/t/p/w500/" + (movieDetailViewModel.movieArray[index].poster_path ?? "")
+        
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let imageURL = URL(string: movieImageText!)
+        let imageURL = URL(string: imageText!)
 
         movieImage.sd_setImage(with: imageURL) { image, error, _, _ in
             if error != nil {
