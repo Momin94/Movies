@@ -9,49 +9,24 @@ class MovieViewModel {
 
     // MARK: - Methods
 
-    func getAllMoviesAF() {
-        AF.request("https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1").response { response in
-            if let data = response.data {
-                do {
-                    let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
-                    if let results = movieResponse.results {
-                        self.movieArray.append(contentsOf: results)
-                    }
-                    DispatchQueue.main.async {
-                        self.movieViewController?.movieTableView.reloadData()
-                    }
-                } catch let err {
-                    print(err)
-                }
+    func getMovies()
+    {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1")!
+       
+        ApiService.shareInstance.getAllMovies(url: url) { model in
+            if let movies = model.results {
+                self.movieArray.append(contentsOf: movies)
+            }
+            DispatchQueue.main.async {
+                self.movieViewController?.movieTableView.reloadData()
             }
         }
     }
+
     
     func getCount() -> Int
     {
         return movieArray.count
-    }
-
-    func getAllMovies() {
-        URLSession.shared.dataTask(with: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1")!) { data, _, error in
-            if error == nil {
-                if let data = data {
-                    do {
-                        let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
-                        if let results = movieResponse.results {
-                            self.movieArray.append(contentsOf: results)
-                        }
-                        DispatchQueue.main.async {
-                            self.movieViewController?.movieTableView.reloadData()
-                        }
-                    } catch let err {
-                        print(err)
-                    }
-                }
-            } else {
-                print(error?.localizedDescription ?? "default value")
-            }
-        }.resume()
     }
 
         

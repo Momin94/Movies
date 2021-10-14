@@ -14,7 +14,7 @@ class MoviesTableViewController: UIViewController {
                                       bundle: nil),
                         forCellReuseIdentifier: movieCell.getCellName())
         movieViewModel.movieViewController = self
-        movieViewModel.getAllMoviesAF()
+        movieViewModel.getMovies()
     }
 }
 
