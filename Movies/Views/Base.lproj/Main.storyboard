@@ -11,7 +11,7 @@
         <!--Popular Movies-->
         <scene sceneID="nOg-jB-5JN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8ga-El-FE4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="movieNavigation" automaticallyAdjustsScrollViewInsets="NO" id="8ga-El-FE4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Popular Movies" id="X66-v8-5rh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pbm-6P-6O8">
@@ -30,7 +30,7 @@
         <!--Popular Movies-->
         <scene sceneID="iwA-sO-j5T">
             <objects>
-                <tableViewController id="kab-d0-wYF" customClass="MoviesTableViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="movieMain" id="kab-d0-wYF" customClass="MoviesTableViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BDE-kG-cbO">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
