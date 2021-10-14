@@ -12,7 +12,7 @@ class MoviesTableViewController: UIViewController {
         super.viewDidLoad()
         movieTableView.register(UINib(nibName: movieCell.getCellName(),
                                       bundle: nil),
-                        forCellReuseIdentifier: movieCell.getCellName())
+                                forCellReuseIdentifier: movieCell.getCellName())
         movieViewModel.movieViewController = self
         movieViewModel.getMovies()
     }

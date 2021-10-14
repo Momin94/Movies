@@ -4,8 +4,8 @@ import UIKit.UIImage
 class MovieDetailsViewModel {
     // MARK: - Properties
 
-  var movieArray = [MovieResults]()
-  weak var movieDetailViewController: MovieDetailsViewController?
+    var movieArray = [MovieResults]()
+    weak var movieDetailViewController: MovieDetailsViewController?
 
     // MARK: - Methods
 
@@ -18,7 +18,7 @@ class MovieDetailsViewModel {
                         self.movieArray.append(contentsOf: results)
                     }
                     DispatchQueue.main.async {
-                      //  self.movieViewController?.movieTableView.reloadData()
+                        //  self.movieViewController?.movieTableView.reloadData()
                     }
                 } catch let err {
                     print(err)
@@ -37,7 +37,7 @@ class MovieDetailsViewModel {
                             self.movieArray.append(contentsOf: results)
                         }
                         DispatchQueue.main.async {
-                           // self.movieViewController?.movieTableView.reloadData()
+                            // self.movieViewController?.movieTableView.reloadData()
                         }
                     } catch let err {
                         print(err)
@@ -48,6 +48,4 @@ class MovieDetailsViewModel {
             }
         }.resume()
     }
-
-        
 }

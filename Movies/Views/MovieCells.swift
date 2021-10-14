@@ -5,7 +5,8 @@ class MovieCells: UITableViewCell {
 
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
-    public var cellName : String = "MovieCells"
+    public var cellName: String = "MovieCells"
+
     // MARK: - Methods
 
     override func awakeFromNib() {
@@ -18,13 +19,12 @@ class MovieCells: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
     func setupCell(movie: MovieResults) {
-        
         movieTitle.text = movie.original_title
     }
-    
-    func getCellName() -> String
-    {
+
+    func getCellName() -> String {
         return cellName
     }
 }
