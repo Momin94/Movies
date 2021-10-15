@@ -30,10 +30,13 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
-        let modelMovie = movieViewModel.movieArray[indexPath.row]
-        cell?.movieTitle.text = modelMovie.title
-        let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? ""))
-        cell?.movieImage.sd_setImage(with: imageURL)
+
+        if indexPath.row <= movieViewModel.movieArray.count {
+            let modelMovie = movieViewModel.movieArray[indexPath.row]
+            cell?.movieTitle.text = modelMovie.title
+            let imageURL = URL(string: "\(Constants.shareInstance.getBaseImageUrl())" + (modelMovie.poster_path ?? ""))
+            cell?.movieImage.sd_setImage(with: imageURL)
+        }
         return cell!
     }
 
@@ -44,9 +47,8 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
         }
 
         if indexPath.row <= movieViewModel.movieArray.count {
-            let movieViewModel = movieViewModel
-            destinationController.movieDetailViewModel = movieViewModel
-            destinationController.index = indexPath.row
+            let movieModel = movieViewModel.movieArray[indexPath.row]
+            destinationController.movieModel = movieModel
             navigationController?.show(destinationController, sender: self)
         }
     }

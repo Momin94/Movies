@@ -10,19 +10,18 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieOverview: UILabel!
     @IBOutlet var movieDate: UILabel!
 
-    var movieDetailViewModel: MovieViewModel!
-    var index: Int = 0
     var imageText: String?
+    var movieModel: MovieResults!
 
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieGenre?.text = movieDetailViewModel.movieArray[index].vote_average?.description
-        movieTitle?.text = movieDetailViewModel.movieArray[index].title
-        movieDate?.text = movieDetailViewModel.movieArray[index].release_date
-        movieOverview?.text = movieDetailViewModel.movieArray[index].overview
-        imageText = "https://image.tmdb.org/t/p/w500/" + (movieDetailViewModel.movieArray[index].poster_path ?? "")
+        movieGenre?.text = movieModel.vote_average?.description
+        movieTitle?.text = movieModel.title
+        movieDate?.text = movieModel.release_date
+        movieOverview?.text = movieModel.overview
+        imageText = "https://image.tmdb.org/t/p/w500/" + (movieModel.poster_path ?? "")
     }
 
     override func viewDidLayoutSubviews() {
