@@ -11,7 +11,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieDate: UILabel!
 
     var movieDetailViewModel: MovieViewModel!
-    var index: Int!
+    var index: Int = 0
     var imageText: String?
 
     // MARK: - Methods

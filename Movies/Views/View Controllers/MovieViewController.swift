@@ -10,11 +10,14 @@ class MoviesTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieTableView.register(UINib(nibName: movieCell.getCellName(),
+        movieTableView.register(UINib(nibName: Constants.shareInstance.getCellName(),
                                       bundle: nil),
                                 forCellReuseIdentifier: movieCell.getCellName())
-        movieViewModel.movieViewController = self
-        movieViewModel.getMovies()
+        movieViewModel.getMovie { _ in
+            DispatchQueue.main.async {
+                self.movieTableView.reloadData()
+            }
+        }
     }
 }
 
@@ -26,7 +29,7 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: movieCell.getCellName(), for: indexPath) as? MovieCells
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
         let modelMovie = movieViewModel.movieArray[indexPath.row]
         cell?.movieTitle.text = modelMovie.title
         let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? ""))
