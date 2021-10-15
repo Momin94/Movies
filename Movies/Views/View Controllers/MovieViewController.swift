@@ -12,7 +12,7 @@ class MoviesTableViewController: UIViewController {
         super.viewDidLoad()
         movieTableView.register(UINib(nibName: Constants.shareInstance.getCellName(),
                                       bundle: nil),
-                                forCellReuseIdentifier: movieCell.getCellName())
+                                forCellReuseIdentifier: Constants.shareInstance.getCellName())
         movieViewModel.getMovie { _ in
             DispatchQueue.main.async {
                 self.movieTableView.reloadData()
@@ -29,7 +29,7 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
         else {
             return UITableViewCell()
         }
