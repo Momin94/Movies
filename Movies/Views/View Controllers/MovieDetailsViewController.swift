@@ -9,25 +9,24 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieOverview: UILabel!
     @IBOutlet var movieDate: UILabel!
-    var movieGenreText: String?
-    var movieTitleText: String?
-    var movieOverviewText: String?
-    var movieDateText: String?
-    var movieImageText: String?
+
+    var imageText: String?
+    var movieModel: MovieResults?
 
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieGenre?.text = movieGenreText
-        movieTitle?.text = movieTitleText
-        movieDate?.text = movieDateText
-        movieOverview?.text = movieOverviewText
+        movieGenre?.text = movieModel?.vote_average?.description
+        movieTitle?.text = movieModel?.title
+        movieDate?.text = movieModel?.release_date
+        movieOverview?.text = movieModel?.overview
+        imageText = "\(Constants.shareInstance.getBaseImageUrl())" + "\(movieModel?.poster_path ?? "")"
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let imageURL = URL(string: movieImageText!)
+        let imageURL = URL(string: imageText!)
 
         movieImage.sd_setImage(with: imageURL) { image, error, _, _ in
             if error != nil {
@@ -38,12 +37,5 @@ class MovieDetailsViewController: UIViewController {
                 self.movieImage.image = image
             }
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
     }
 }

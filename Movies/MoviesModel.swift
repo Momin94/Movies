@@ -59,6 +59,8 @@ struct MovieResults: Codable {
         case vote_count
     }
 
+    // MARK: - Initialiser
+
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         adult = try values.decodeIfPresent(Bool.self, forKey: .adult)

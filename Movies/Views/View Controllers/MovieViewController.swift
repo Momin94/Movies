@@ -6,16 +6,18 @@ class MoviesTableViewController: UIViewController {
 
     @IBOutlet var movieTableView: UITableView!
     var movieViewModel = MovieViewModel()
+    var movieCell = MovieCells()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bindViewModel()
-        //    movieViewModel.movieArray.forEach(MovieResults in
-        //    bind(MovieResults))
-        movieTableView.register(UINib(nibName: "MovieCells", bundle: nil), forCellReuseIdentifier: "MovieCells")
-        movieViewModel.movieViewController = self
-        movieViewModel.getAllMoviesAF()
-        
+        movieTableView.register(UINib(nibName: Constants.shareInstance.getCellName(),
+                                      bundle: nil),
+                                forCellReuseIdentifier: movieCell.getCellName())
+        movieViewModel.getMovie { _ in
+            DispatchQueue.main.async {
+                self.movieTableView.reloadData()
+            }
+        }
     }
 }
 
@@ -23,42 +25,34 @@ class MoviesTableViewController: UIViewController {
 
 extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieViewModel.movieArray.count
+        return movieViewModel.getCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCells", for: indexPath) as? MovieCells
-        let modelMovie = movieViewModel.movieArray[indexPath.row]
-        cell?.movieTitle.text = modelMovie.title
-        let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? ""))
-        cell?.movieImage.sd_setImage(with: imageURL)
-        return cell!
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
+        else {
+            return UITableViewCell()
+        }
+
+        if indexPath.row <= movieViewModel.movieArray.count {
+            let modelMovie = movieViewModel.movieArray[indexPath.row]
+            cell.movieTitle.text = modelMovie.title
+            let imageURL = URL(string: "\(Constants.shareInstance.getBaseImageUrl())" + (modelMovie.poster_path ?? ""))
+            cell.movieImage.sd_setImage(with: imageURL)
+        }
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as! MovieDetailsViewController
+        guard let destinationController = storyboard.instantiateViewController(withIdentifier: "moviedetail") as? MovieDetailsViewController else {
+            return
+        }
 
-        let modelMovie = movieViewModel.movieArray[indexPath.row]
-
-        destinationController.movieGenreText = modelMovie.vote_average?.description
-        destinationController.movieDateText = modelMovie.release_date
-        destinationController.movieOverviewText = modelMovie.overview
-        destinationController.movieTitleText = modelMovie.title
-        let imageURL = "https://image.tmdb.org/t/p/w500/" + (modelMovie.poster_path ?? "")
-        destinationController.movieImageText = imageURL
-
-        navigationController?.show(destinationController, sender: self)
+        if indexPath.row <= movieViewModel.movieArray.count {
+            let movieModel = movieViewModel.movieArray[indexPath.row]
+            destinationController.movieModel = movieModel
+            navigationController?.show(destinationController, sender: self)
+        }
     }
-    
-//    func bindViewModel() {
-//            if let viewModel = movieViewModel {
-//                viewModel.helloText.bind({ (helloText) in
-//                    DispatchQueue.main.async {
-//                        self.helloLabel.text = helloText
-//                    }
-//                })
-//            }
-//        }
-    
 }

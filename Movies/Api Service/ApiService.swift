@@ -1,11 +1,19 @@
+import Alamofire
 import UIKit
 
 class ApiService: NSObject {
     static let shareInstance = ApiService()
-    var movieArray = [MovieResults]()
-    weak var movieViewController: MoviesTableViewController?
 
-    func getAllMovies() {
-        URLSession.shared.dataTask(with: URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=4c4170e285c8fd140fb81350cf566a45&page=1")!)
+    func getAllMovies(url: URL, callback: @escaping (ResultModel) -> Void) {
+        AF.request("\(Constants.shareInstance.getBaseAPI())\(Constants.shareInstance.getAPIKey())\(Constants.shareInstance.getAPIParams())").response { response in
+            if let data = response.data {
+                do {
+                    let movieResponse = try JSONDecoder().decode(ResultModel.self, from: data)
+                    callback(movieResponse)
+                } catch let err {
+                    print(err)
+                }
+            }
+        }
     }
 }

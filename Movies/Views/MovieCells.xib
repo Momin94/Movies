@@ -16,11 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="movieCells" translatesAutoresizingMaskIntoConstraints="NO" id="FcQ-gh-m5Y">
-                        <rect key="frame" x="0.0" y="0.0" width="159" height="100"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" restorationIdentifier="movieCells" translatesAutoresizingMaskIntoConstraints="NO" id="FcQ-gh-m5Y">
+                        <rect key="frame" x="16" y="8" width="1" height="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="FcQ-gh-m5Y" secondAttribute="height" multiplier="2:3" constant="1" id="RNk-oh-2h1"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wV-r4-O8R">
-                        <rect key="frame" x="167" y="40" width="137" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wV-r4-O8R">
+                        <rect key="frame" x="25" y="-4" width="137" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="137" id="voA-D4-VA5"/>
                         </constraints>
@@ -30,12 +33,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="FcQ-gh-m5Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0N4-AC-XJH"/>
-                    <constraint firstAttribute="bottom" secondItem="FcQ-gh-m5Y" secondAttribute="bottom" id="4xN-Wj-bJX"/>
-                    <constraint firstItem="FcQ-gh-m5Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7oZ-eD-rnC"/>
-                    <constraint firstItem="3wV-r4-O8R" firstAttribute="leading" secondItem="FcQ-gh-m5Y" secondAttribute="trailing" constant="8" symbolic="YES" id="94D-T8-qv4"/>
+                    <constraint firstItem="FcQ-gh-m5Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0N4-AC-XJH"/>
+                    <constraint firstAttribute="bottom" secondItem="FcQ-gh-m5Y" secondAttribute="bottom" constant="8" id="4xN-Wj-bJX"/>
+                    <constraint firstItem="FcQ-gh-m5Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="7oZ-eD-rnC"/>
+                    <constraint firstItem="3wV-r4-O8R" firstAttribute="leading" secondItem="FcQ-gh-m5Y" secondAttribute="trailing" constant="8" id="94D-T8-qv4"/>
                     <constraint firstItem="3wV-r4-O8R" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9MS-yd-PNc"/>
-                    <constraint firstItem="FcQ-gh-m5Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZsD-xM-r8g"/>
                     <constraint firstItem="FcQ-gh-m5Y" firstAttribute="centerY" secondItem="3wV-r4-O8R" secondAttribute="centerY" id="cXv-2F-Mco"/>
                     <constraint firstItem="3wV-r4-O8R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-15" id="yiT-Ua-VSu"/>
                 </constraints>

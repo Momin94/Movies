@@ -11,6 +11,8 @@
 		290FB7F0270B5C5400598DD8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 290FB7EF270B5C5400598DD8 /* Alamofire */; };
 		294BB0DA270C22B1008F4F5D /* MovieCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BB0D8270C22B1008F4F5D /* MovieCells.swift */; };
 		294BB0DB270C22B1008F4F5D /* MovieCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 294BB0D9270C22B1008F4F5D /* MovieCells.xib */; };
+		295DFD63271836E40023F6EF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 295DFD62271836E40023F6EF /* Lottie */; };
+		298339D927195253003BFFAE /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298339D827195253003BFFAE /* ProjectConstants.swift */; };
 		2994E6BF270B00E90059D333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994E6BE270B00E90059D333 /* AppDelegate.swift */; };
 		2994E6C1270B00E90059D333 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994E6C0270B00E90059D333 /* SceneDelegate.swift */; };
 		2994E6C3270B00E90059D333 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994E6C2270B00E90059D333 /* MovieViewController.swift */; };
@@ -48,6 +50,7 @@
 		290FB7EC270B591700598DD8 /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		294BB0D8270C22B1008F4F5D /* MovieCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieCells.swift; path = Movies/Views/MovieCells.swift; sourceTree = SOURCE_ROOT; };
 		294BB0D9270C22B1008F4F5D /* MovieCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MovieCells.xib; path = Movies/Views/MovieCells.xib; sourceTree = SOURCE_ROOT; };
+		298339D827195253003BFFAE /* ProjectConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
 		2994E6BB270B00E90059D333 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2994E6BE270B00E90059D333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2994E6C0270B00E90059D333 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 			files = (
 				2994E6F6270B01740059D333 /* SDWebImage in Frameworks */,
 				290FB7F0270B5C5400598DD8 /* Alamofire in Frameworks */,
+				295DFD63271836E40023F6EF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				2994E701270B0A580059D333 /* Observable.swift */,
+				298339D827195253003BFFAE /* ProjectConstants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			packageProductDependencies = (
 				2994E6F5270B01740059D333 /* SDWebImage */,
 				290FB7EF270B5C5400598DD8 /* Alamofire */,
+				295DFD62271836E40023F6EF /* Lottie */,
 			);
 			productName = Movies;
 			productReference = 2994E6BB270B00E90059D333 /* Movies.app */;
@@ -295,6 +301,7 @@
 			packageReferences = (
 				2994E6F4270B01740059D333 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				290FB7EE270B5C5400598DD8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				295DFD61271836E40023F6EF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 2994E6BC270B00E90059D333 /* Products */;
 			projectDirPath = "";
@@ -343,6 +350,7 @@
 				2994E706270B1E850059D333 /* MovieDetailsViewController.swift in Sources */,
 				2994E6C3270B00E90059D333 /* MovieViewController.swift in Sources */,
 				294BB0DA270C22B1008F4F5D /* MovieCells.swift in Sources */,
+				298339D927195253003BFFAE /* ProjectConstants.swift in Sources */,
 				290FB7ED270B591700598DD8 /* MoviesModel.swift in Sources */,
 				2994E702270B0A580059D333 /* Observable.swift in Sources */,
 				2994E6BF270B00E90059D333 /* AppDelegate.swift in Sources */,
@@ -527,6 +535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D8T64X6SP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -554,6 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D8T64X6SP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -716,6 +726,14 @@
 				kind = branch;
 			};
 		};
+		295DFD61271836E40023F6EF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		2994E6F4270B01740059D333 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -731,6 +749,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 290FB7EE270B5C5400598DD8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		295DFD62271836E40023F6EF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 295DFD61271836E40023F6EF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		2994E6F5270B01740059D333 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
