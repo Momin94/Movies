@@ -29,15 +29,18 @@ extension MoviesTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.shareInstance.getCellName(), for: indexPath) as? MovieCells
+        else {
+            return UITableViewCell()
+        }
 
         if indexPath.row <= movieViewModel.movieArray.count {
             let modelMovie = movieViewModel.movieArray[indexPath.row]
-            cell?.movieTitle.text = modelMovie.title
+            cell.movieTitle.text = modelMovie.title
             let imageURL = URL(string: "\(Constants.shareInstance.getBaseImageUrl())" + (modelMovie.poster_path ?? ""))
-            cell?.movieImage.sd_setImage(with: imageURL)
+            cell.movieImage.sd_setImage(with: imageURL)
         }
-        return cell!
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

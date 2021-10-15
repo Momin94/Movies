@@ -11,17 +11,17 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet var movieDate: UILabel!
 
     var imageText: String?
-    var movieModel: MovieResults!
+    var movieModel: MovieResults?
 
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieGenre?.text = movieModel.vote_average?.description
-        movieTitle?.text = movieModel.title
-        movieDate?.text = movieModel.release_date
-        movieOverview?.text = movieModel.overview
-        imageText = "https://image.tmdb.org/t/p/w500/" + (movieModel.poster_path ?? "")
+        movieGenre?.text = movieModel?.vote_average?.description
+        movieTitle?.text = movieModel?.title
+        movieDate?.text = movieModel?.release_date
+        movieOverview?.text = movieModel?.overview
+        imageText = "\(Constants.shareInstance.getBaseImageUrl())" + "\(movieModel?.poster_path ?? "")"
     }
 
     override func viewDidLayoutSubviews() {
@@ -37,12 +37,5 @@ class MovieDetailsViewController: UIViewController {
                 self.movieImage.image = image
             }
         }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
     }
 }
