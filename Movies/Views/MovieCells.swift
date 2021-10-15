@@ -5,7 +5,6 @@ class MovieCells: UITableViewCell {
 
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
-    public var cellName: String = "MovieCells"
 
     // MARK: - Methods
 
@@ -22,9 +21,5 @@ class MovieCells: UITableViewCell {
 
     func setupCell(movie: MovieResults) {
         movieTitle.text = movie.original_title
-    }
-
-    func getCellName() -> String {
-        return cellName
     }
 }
